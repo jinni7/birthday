@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Person</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        rose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Glassmorphism Styles */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(255, 182, 193, 0.2);
+        }
+        
+        .glass-card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-6px) scale(1.02);
+            background: rgba(255, 255, 255, 0.65);
+            box-shadow: 0 15px 35px 0 rgba(244, 63, 94, 0.25);
+        }
+
+        /* Perspective for Flip Cards */
+        .perspective {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Glow Animations */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.1); }
+        }
+        .glow-bg {
+            animation: pulseGlow 8s infinite ease-in-out;
+        }
+
+        /* Particle floating animation */
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+        .floating-heart {
+            position: absolute;
+            animation: floatUp 4s linear forwards;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-rose-50 via-peach-50 to-purple-100 text-slate-800 antialiased selection:bg-rose-200 selection:text-rose-900 min-h-screen relative overflow-x-hidden font-sans">
+
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="glow-bg absolute -top-20 -left-20 w-96 h-96 bg-rose-300 rounded-full blur-3xl opacity-50"></div>
+        <div class="glow-bg absolute top-1/3 -right-20 w-96 h-96 bg-amber-200 rounded-full blur-3xl opacity-50" style="animation-delay: 2s;"></div>
+        <div class="glow-bg absolute -bottom-20 left-1/3 w-96 h-96 bg-purple-200 rounded-full blur-3xl opacity-50" style="animation-delay: 4s;"></div>
+    </div>
+
+    <div class="relative z-10">
+
+        <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative">
+            <div class="glass-card p-8 md:p-14 rounded-3xl max-w-3xl mx-auto space-y-6 transform transition-all duration-700">
+                <div class="inline-block px-4 py-1.5 bg-rose-100/80 text-rose-600 rounded-full text-sm font-semibold tracking-wide uppercase mb-2">
+                    <i class="fa-solid fa-sparkles mr-1"></i> A Surprise Gift For You
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    To My Favorite Person in the <span class="bg-gradient-to-r from-rose-500 to-purple-600 bg-clip-text text-transparent">Universe</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 max-w-xl mx-auto leading-relaxed">
+                    Celebrating our journey, memories, late-night talks, and everything in between. Thank you for being my anchor and my happiness.
+                </p>
+                <div class="pt-4">
+                    <a href="#story" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-rose-400 to-rose-500 hover:from-rose-500 hover:to-rose-600 text-white font-semibold rounded-full shadow-lg shadow-rose-300/50 hover:shadow-rose-400/60 transform hover:-translate-y-0.5 transition-all duration-300">
+                        Begin Our Journey
+                        <i class="fa-solid fa-arrow-down text-sm animate-bounce"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="story" class="py-20 px-4 max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Why You Mean the World to Me</h2>
+                <p class="text-slate-600 mt-2">A few snapshots of how we became inseparable.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card glass-card-hover p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-500 rounded-xl flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-[#ff6b6b] fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">How We Met</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        I still remember the day we first talked. I had no idea that a single conversation would lead to finding my absolute favorite human being.
+                    </p>
+                </div>
+
+                <div class="glass-card glass-card-hover p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-500 rounded-xl flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-face-smile-beam"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Best Memories</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        From spontaneous adventures to sitting in complete silence without any awkwardness—every minute with you is my comfort zone.
+                    </p>
+                </div>
+
+                <div class="glass-card glass-card-hover p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-500 rounded-xl flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Why You're My Everything</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        You listen, you care, and you lift me up like no one else ever could. You're my best friend, my confidant, and my home.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-4 max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Memories Gallery</h2>
+                <p class="text-slate-600 mt-2">A tiny collection of moments I cherish with you.</p>
+                
+                <div class="flex flex-wrap justify-center gap-3 mt-8">
+                    <button onclick="filterGallery('all')" class="gallery-btn active px-5 py-2 rounded-full glass-card text-sm font-medium hover:bg-rose-100 transition">All</button>
+                    <button onclick="filterGallery('adventures')" class="gallery-btn px-5 py-2 rounded-full glass-card text-sm font-medium hover:bg-rose-100 transition">Adventures</button>
+                    <button onclick="filterGallery('latenights')" class="gallery-btn px-5 py-2 rounded-full glass-card text-sm font-medium hover:bg-rose-100 transition">Late Nights</button>
+                    <button onclick="filterGallery('favorites')" class="gallery-btn px-5 py-2 rounded-full glass-card text-sm font-medium hover:bg-rose-100 transition">Favorites</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="gallery-grid">
+                
+                <div class="gallery-item adventures glass-card rounded-2xl overflow-hidden cursor-pointer group" onclick="openLightbox('Snapchat-1610005225.jpg')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="Snapchat-1610005225.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition flex items-end p-4 text-white">
+                            <p class="text-sm font-medium"><i class="fa-solid fa-camera mr-2"></i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item latenights glass-card rounded-2xl overflow-hidden cursor-pointer group" onclick="openLightbox('Snapchat-1789275817.jpg', 'Late night conversations that meant everything.')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="Snapchat-1789275817.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition flex items-end p-4 text-white">
+                            <p class="text-sm font-medium"><i class="fa-solid fa-camera mr-2"></i>Late night talks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item favorites glass-card rounded-2xl overflow-hidden cursor-pointer group" onclick="openLightbox('Snapchat-1608570593.jpg', 'That day you made me laugh until my stomach hurt.')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="Snapchat-1608570593.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition flex items-end p-4 text-white">
+                            <p class="text-sm font-medium"><i class="fa-solid fa-camera mr-2"></i>Pure laughter</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item adventures favorites glass-card rounded-2xl overflow-hidden cursor-pointer group" onclick="openLightbox('Snapchat-1473954855.jpg')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="Snapchat-1473954855.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition flex items-end p-4 text-white">
+                            <p class="text-sm font-medium"><i class="fa-solid fa-camera mr-2"></i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item latenights glass-card rounded-2xl overflow-hidden cursor-pointer group" onclick="openLightbox('Snapchat-504126147.jpg', 'Always keeping each other sane.')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="Snapchat-504126147.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition flex items-end p-4 text-white">
+                            <p class="text-sm font-medium"><i class="fa-solid fa-camera mr-2"></i>Best partners in crime</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item favorites glass-card rounded-2xl overflow-hidden cursor-pointer group" onclick="openLightbox('Snapchat-1323700003.jpg', 'My favorite picture of you.')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="Snapchat-1323700003.jpg" alt="Memory" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition flex items-end p-4 text-white">
+                            <p class="text-sm font-medium"><i class="fa-solid fa-camera mr-2"></i>That effortless smile</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-20 px-4 max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Reasons Why You're Amazing</h2>
+                <p class="text-slate-600 mt-2">Hover or tap on any card to flip it over!</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+                
+                <div class="perspective h-48 cursor-pointer flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-sm transition-all duration-500">
+                        <div class="flip-card-front absolute inset-0 glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+                            <i class="fa-solid fa-face-smile text-3xl text-rose-400 mb-3"></i>
+                            <h4 class="font-bold text-slate-800">Your Smile</h4>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-gradient-to-br from-rose-400 to-rose-500 text-white rounded-2xl p-6 flex items-center justify-center text-center text-sm font-medium shadow-xl">
+                            It can literally brighten up my worst day in less than a second.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="perspective h-48 cursor-pointer flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-sm transition-all duration-500">
+                        <div class="flip-card-front absolute inset-0 glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+                            <i class="fa-solid fa-ear-listen text-3xl text-purple-400 mb-3"></i>
+                            <h4 class="font-bold text-slate-800">How You Listen</h4>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-500 text-white rounded-2xl p-6 flex items-center justify-center text-center text-sm font-medium shadow-xl">
+                            You always pay attention to the smallest details I mention.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="perspective h-48 cursor-pointer flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-sm transition-all duration-500">
+                        <div class="flip-card-front absolute inset-0 glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+                            <i class="fa-solid fa-shield-heart text-3xl text-amber-400 mb-3"></i>
+                            <h4 class="font-bold text-slate-800">Your Kindness</h4>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-gradient-to-br from-amber-400 to-amber-500 text-white rounded-2xl p-6 flex items-center justify-center text-center text-sm font-medium shadow-xl">
+                            The way you care for people around you inspires me every day.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="perspective h-48 cursor-pointer flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-sm transition-all duration-500">
+                        <div class="flip-card-front absolute inset-0 glass-card rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+                            <i class="fa-solid fa-infinity text-3xl text-rose-400 mb-3"></i>
+                            <h4 class="font-bold text-slate-800">Just Being You</h4>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-gradient-to-br from-rose-400 to-purple-500 text-white rounded-2xl p-6 flex items-center justify-center text-center text-sm font-medium shadow-xl">
+                            You don't have to try. You are simply unforgettable as you are.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-16 text-center">
+                <button onclick="toggleModal(true)" class="px-8 py-4 bg-slate-900 text-white rounded-full font-medium shadow-xl hover:bg-slate-800 transform hover:scale-105 transition-all duration-300">
+                    <i class="fa-solid fa-envelope-open-text text-rose-400 mr-2"></i> Click for a Secret Message
+                </button>
+            </div>
+        </section>
+
+        <footer class="py-12 px-4 border-t border-rose-100/50 text-center relative">
+            <p class="text-rose-500 font-semibold tracking-wider text-sm flex items-center justify-center gap-2">
+                Made with <i class="fa-solid fa-heart animate-pulse"></i> forever and always.
+            </p>
+
+            <div class="mt-6 inline-flex items-center gap-3 px-4 py-2 glass-card rounded-full text-xs text-slate-600">
+                <i class="fa-solid fa-music text-rose-400"></i>
+                <span>Ambient Music</span>
+                <audio id="bg-audio" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+                <button id="music-toggle" onclick="toggleMusic()" class="ml-2 w-7 h-7 rounded-full bg-rose-400 text-white flex items-center justify-center focus:outline-none">
+                    <i id="music-icon" class="fa-solid fa-play text-[10px]"></i>
+                </button>
+            </div>
+        </footer>
+
+    </div>
+
+    <div id="lightbox" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-2xl hover:text-rose-300 transition"><i class="fa-solid fa-xmark"></i></button>
+        <div class="max-w-3xl w-full text-center">
+            <img id="lightbox-img" src="" alt="Expanded photo" class="max-h-[75vh] mx-auto rounded-xl shadow-2xl object-contain">
+            <p id="lightbox-caption" class="text-white mt-4 text-base font-light tracking-wide"></p>
+        </div>
+    </div>
+
+    <div id="secret-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+        <div class="glass-card bg-white/90 p-8 md:p-10 rounded-3xl max-w-lg w-full relative overflow-hidden text-center shadow-2xl">
+            <button onclick="toggleModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            
+            <div class="w-16 h-16 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fa-solid fa-envelope-open"></i>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">My Secret Note To You</h3>
+            
+            <div class="text-slate-600 space-y-3 text-sm leading-relaxed text-left max-h-60 overflow-y-auto pr-2">
+                <p>Hey,</p>
+                <p>I built this tiny corner of the web just to remind you of how irreplaceable you are in my life.</p>
+                <p>You’re not just my best friend—you’re the person who makes bad days feel manageable and good days feel unforgettable. I love every joke we share, every talk we have, and every memory we make.</p>
+                <p>Thank you for simply being you. Always.</p>
+            </div>
+
+            <div class="mt-6">
+                <button onclick="toggleModal(false)" class="px-6 py-2.5 bg-rose-500 text-white text-sm font-medium rounded-full shadow-md hover:bg-rose-600 transition">Close Note</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gallery Filter Logic
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.gallery-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('bg-rose-400', 'text-white'));
+            event.target.classList.add('bg-rose-400', 'text-white');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Lightbox Functions
+        function openLightbox(src, caption) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').innerText = caption;
+            document.getElementById('lightbox').classList.remove('hidden');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // Secret Note Modal & Particle Effects
+        function toggleModal(show) {
+            const modal = document.getElementById('secret-modal');
+            if (show) {
+                modal.classList.remove('hidden');
+                spawnHearts();
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        // Floating Hearts Particle Effect
+        function spawnHearts() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('i');
+                    heart.classList.add('fa-solid', 'fa-heart', 'text-rose-400', 'floating-heart', 'text-xl');
+                    heart.style.left = Math.random() * 80 + 10 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 4000);
+                }, i * 150);
+            }
+        }
+
+        // Background Music Toggle Logic
+        function toggleMusic() {
+            const audio = document.getElementById('bg-audio');
+            const icon = document.getElementById('music-icon');
+            if (audio.paused) {
+                audio.play();
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+            } else {
+                audio.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+            }
+        }
+    </script>
+</body>
+</html>
